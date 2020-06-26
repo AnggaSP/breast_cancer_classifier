@@ -346,25 +346,3 @@ def crop_mammogram_one_image_short_path(scan, input_data_folder, output_data_fol
         buffer_size=buffer_size,
     )
     return list(zip([scan['short_file_path']] * 4, cropping_info))
-
-
-if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description='Remove background of image and save cropped files')
-    parser.add_argument('--input-data-folder', required=True)
-    parser.add_argument('--output-data-folder', required=True)
-    parser.add_argument('--exam-list-path', required=True)
-    parser.add_argument('--cropped-exam-list-path', required=True)
-    parser.add_argument('--num-processes', default=10, type=int)
-    parser.add_argument('--num-iterations', default=100, type=int)
-    parser.add_argument('--buffer-size', default=50, type=int)
-    args = parser.parse_args()
-    
-    crop_mammogram(
-        input_data_folder=args.input_data_folder, 
-        exam_list_path=args.exam_list_path, 
-        cropped_exam_list_path=args.cropped_exam_list_path, 
-        output_data_folder=args.output_data_folder, 
-        num_processes=args.num_processes,
-        num_iterations=args.num_iterations,
-        buffer_size=args.buffer_size,
-    )

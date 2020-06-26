@@ -80,7 +80,7 @@ def get_optimal_centers(data_list, data_prefix, num_processes=1):
     return dict(result)
 
 
-def main(cropped_exam_list_path, data_prefix, output_exam_list_path, num_processes=1):
+def extract_optimal_center(cropped_exam_list_path, data_prefix, output_exam_list_path, num_processes=1):
     exam_list = pickling.unpickle_from_file(cropped_exam_list_path)
     data_list = data_handling.unpack_exam_into_images(exam_list, cropped=True)
     optimal_centers = get_optimal_centers(
@@ -91,19 +91,3 @@ def main(cropped_exam_list_path, data_prefix, output_exam_list_path, num_process
     data_handling.add_metadata(exam_list, "best_center", optimal_centers)
     os.makedirs(os.path.dirname(output_exam_list_path), exist_ok=True)
     pickling.pickle_to_file(output_exam_list_path, exam_list)
-
-
-if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description='Compute and Extract Optimal Centers')
-    parser.add_argument('--cropped-exam-list-path')
-    parser.add_argument('--data-prefix')
-    parser.add_argument('--output-exam-list-path', required=True)
-    parser.add_argument('--num-processes', default=20)
-    args = parser.parse_args()
-
-    main(
-        cropped_exam_list_path=args.cropped_exam_list_path,
-        data_prefix=args.data_prefix,
-        output_exam_list_path=args.output_exam_list_path,
-        num_processes=int(args.num_processes),
-    )
