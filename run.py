@@ -26,7 +26,7 @@ extract_optimal_center(
 )
 
 heatmap_parameters = dict(
-    device_type='cpu',
+    device_type='gpu',
     gpu_number=0,
 
     patch_size=256,
@@ -54,7 +54,7 @@ model, device = load_model(heatmap_parameters)
 produce_heatmaps(model, device, heatmap_parameters)
 
 model_parameters = {
-    "device_type": 'cpu',
+    "device_type": 'gpu',
     "gpu_number": 0,
     "max_crop_noise": (100, 100),
     "max_crop_size_noise": 100,
