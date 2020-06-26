@@ -1,11 +1,11 @@
 import random
 import os
 
-from src.cropping import crop_mammogram
-from src.optimal_centers import extract_optimal_center
-from src.heatmaps import load_model
-from src.heatmaps import produce_heatmaps
-from src.modeling import load_run_save
+from src.cropping.crop_mammogram import crop_mammogram
+from src.optimal_centers.get_optimal_centers import extract_optimal_center
+from src.heatmaps.run_producer import load_model
+from src.heatmaps.run_producer import produce_heatmaps
+from src.modeling.run_model import load_run_save
 from src.constants import MODELMODES
 
 crop_mammogram(
