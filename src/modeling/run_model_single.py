@@ -154,7 +154,7 @@ def run(parameters):
         "benign": float(agg_predictions[0]),
         "malignant": float(agg_predictions[1]),
     }
-    print(json.dumps(predictions_dict))
+    return predictions_dict
 
 
 def main():
